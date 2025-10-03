@@ -1,101 +1,186 @@
-// Mobile Navigation Toggle
+// Advanced Mobile Navigation Toggle with smooth animations
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navbar = document.querySelector('.navbar');
 
-hamburger.addEventListener('click', () => {
+// Enhanced hamburger animation
+hamburger?.addEventListener('click', () => {
     hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
+    navMenu?.classList.toggle('active');
+    
+    // Add blur effect to background when menu is open
+    if (navMenu?.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    } else {
+        document.body.style.overflow = '';
+        navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+    }
 });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-}));
+// Close mobile menu when clicking on a link with stagger animation
+document.querySelectorAll('.nav-link').forEach((link, index) => {
+    link.addEventListener('click', () => {
+        setTimeout(() => {
+            hamburger?.classList.remove('active');
+            navMenu?.classList.remove('active');
+            document.body.style.overflow = '';
+        }, index * 50); // Stagger the closing animation
+    });
+});
 
-// Smooth scrolling for navigation links
+// Enhanced smooth scrolling with easing
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
+            const navHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+            const targetPosition = target.offsetTop - navHeight - 20;
             
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            // Custom smooth scroll with easing
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 1000;
+            let start = null;
+            
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const run = easeInOutCubic(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            
+            function easeInOutCubic(t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t*t + b;
+                t -= 2;
+                return c/2*(t*t*t + 2) + b;
+            }
+            
+            requestAnimationFrame(animation);
         }
     });
 });
 
-// Navbar background change on scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-        navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.boxShadow = 'none';
-    }
-});
+// Advanced navbar with scroll effects
+let lastScrollTop = 0;
+const navbarScrollThreshold = 100;
 
-// Animated counters for impact section
+window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const navbar = document.querySelector('.navbar');
+    
+    if (!navbar) return;
+    
+    // Navbar background and shadow changes
+    if (scrollTop > navbarScrollThreshold) {
+        navbar.style.background = 'rgba(255, 255, 255, 0.1)';
+        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.08)';
+        navbar.style.backdropFilter = 'blur(40px)';
+    } else {
+        navbar.style.background = 'rgba(255, 255, 255, 0.05)';
+        navbar.style.boxShadow = 'none';
+        navbar.style.backdropFilter = 'blur(40px)';
+    }
+    
+    // Hide/show navbar on scroll
+    if (scrollTop > lastScrollTop && scrollTop > navbarScrollThreshold) {
+        // Scrolling down
+        navbar.style.transform = 'translateY(-100%)';
+    } else {
+        // Scrolling up
+        navbar.style.transform = 'translateY(0)';
+    }
+    
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, { passive: true });
+
+// Enhanced animated counters with easing
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number');
     
-    counters.forEach(counter => {
+    counters.forEach((counter, index) => {
         const target = parseFloat(counter.getAttribute('data-target'));
-        const increment = target / 100;
-        let current = 0;
+        const duration = 2000 + (index * 200); // Stagger animation
+        const startTime = performance.now();
         
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                if (current > target) current = target;
-                
-                // Format the number based on the target
-                if (target >= 10) {
-                    counter.textContent = Math.floor(current);
-                } else {
-                    counter.textContent = current.toFixed(1);
-                }
-                
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const current = target * easeOutQuart;
+            
+            // Format the number based on the target
+            if (target >= 10) {
+                counter.textContent = Math.floor(current);
+            } else {
+                counter.textContent = current.toFixed(1);
+            }
+            
+            if (progress < 1) {
                 requestAnimationFrame(updateCounter);
             }
-        };
+        }
         
-        updateCounter();
+        // Add slight delay for stagger effect
+        setTimeout(() => {
+            requestAnimationFrame(updateCounter);
+        }, index * 100);
     });
 }
 
-// Intersection Observer for animations
+// Advanced Intersection Observer with stagger animations
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            // Add stagger animation to child elements
+            const children = entry.target.querySelectorAll('.problem-card, .advantage-card, .feature-card, .stat-item');
+            
+            children.forEach((child, index) => {
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+            
+            // Animate the section itself
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
             
             // Trigger counter animation when impact section comes into view
             if (entry.target.id === 'impact') {
-                animateCounters();
+                setTimeout(() => animateCounters(), 500);
             }
+            
+            // Unobserve after animation
+            observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observe sections for scroll animations
-document.querySelectorAll('section').forEach(section => {
+// Observe sections for scroll animations with initial setup
+document.querySelectorAll('section').forEach((section, index) => {
     section.style.opacity = '0';
-    section.style.transform = 'translateY(30px)';
-    section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    section.style.transform = 'translateY(60px)';
+    section.style.transition = 'opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    // Set up child elements for stagger animation
+    const children = section.querySelectorAll('.problem-card, .advantage-card, .feature-card, .stat-item');
+    children.forEach(child => {
+        child.style.opacity = '0';
+        child.style.transform = 'translateY(40px)';
+        child.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+    
     observer.observe(section);
 });
 
@@ -139,68 +224,110 @@ document.getElementById('demoForm').addEventListener('submit', function(e) {
     console.log('Form submitted with data:', data);
 });
 
-// Interactive elements
+// Advanced Interactive Elements and Micro-interactions
 document.addEventListener('DOMContentLoaded', () => {
-    // Add hover effects to cards
-    const cards = document.querySelectorAll('.problem-card, .advantage-card, .feature-card, .solution-card');
+    // Enhanced hover effects with magnetic attraction
+    const cards = document.querySelectorAll('.problem-card, .advantage-card, .feature-card, .solution-card, .hero-card');
     
     cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px)';
-            card.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.15)';
+        card.addEventListener('mouseenter', (e) => {
+            card.style.transform = 'translateY(-12px) scale(1.02)';
+            card.style.boxShadow = '0 32px 80px rgba(0, 0, 0, 0.12)';
+            card.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         });
         
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+        card.addEventListener('mouseleave', (e) => {
+            card.style.transform = 'translateY(0) scale(1)';
+            card.style.boxShadow = '0 16px 48px rgba(0, 0, 0, 0.04)';
+        });
+        
+        // Magnetic effect - card follows mouse slightly
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            card.style.transform = `translateY(-12px) scale(1.02) rotateX(${y * 0.05}deg) rotateY(${x * 0.05}deg)`;
         });
     });
     
-    // Add click animation to category icons in hero
+    // Enhanced category icons with ripple effect
     const categoryIcons = document.querySelectorAll('.icon');
     categoryIcons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            icon.style.transform = 'scale(0.95)';
-            icon.style.background = 'rgba(102, 126, 234, 0.3)';
+        icon.addEventListener('click', (e) => {
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = icon.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(0, 0, 0, 0.1);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            icon.style.position = 'relative';
+            icon.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+            
+            // Icon animation
+            icon.style.transform = 'scale(0.9)';
+            icon.style.background = 'rgba(0, 0, 0, 0.08)';
             
             setTimeout(() => {
                 icon.style.transform = 'scale(1)';
-                icon.style.background = 'rgba(102, 126, 234, 0.1)';
+                icon.style.background = 'rgba(0, 0, 0, 0.03)';
             }, 150);
         });
     });
     
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
+    // Advanced parallax with multiple layers
+    let ticking = false;
+    
+    function updateParallax() {
         const scrolled = window.pageYOffset;
         const hero = document.querySelector('.hero');
         const heroContent = document.querySelector('.hero-content');
         const heroVisual = document.querySelector('.hero-visual');
         
         if (hero && scrolled < hero.offsetHeight) {
-            heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-            heroVisual.style.transform = `translateY(${scrolled * 0.2}px)`;
-        }
-    });
-    
-    // Typing effect for hero title
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const text = heroTitle.innerHTML;
-        heroTitle.innerHTML = '';
-        
-        let i = 0;
-        const typeWriter = () => {
-            if (i < text.length) {
-                heroTitle.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
+            // Different parallax speeds for depth
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${scrolled * 0.2}px)`;
             }
-        };
+            if (heroVisual) {
+                heroVisual.style.transform = `translateY(${scrolled * 0.1}px) scale(${1 + scrolled * 0.0001})`;
+            }
+            
+            // Parallax for background elements
+            hero.style.backgroundPosition = `center ${scrolled * 0.5}px`;
+        }
         
-        // Start typing effect after a delay
-        setTimeout(typeWriter, 500);
+        ticking = false;
     }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+    
+    // Typing effect disabled for now to prevent HTML display issues
+    // const heroTitle = document.querySelector('.hero-title');
+    // if (heroTitle) {
+    //     // Typing animation code here
+    // }
     
     // Add loading animation
     const loadingOverlay = document.createElement('div');
@@ -381,4 +508,3 @@ revealElements.forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     revealObserver.observe(el);
 });
-
