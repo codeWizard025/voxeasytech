@@ -644,4 +644,3 @@ document.getElementById('modalDemoForm')?.addEventListener('submit', async funct
         submitBtn.disabled = false;
     }
 });
-
