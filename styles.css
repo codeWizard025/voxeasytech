@@ -311,6 +311,22 @@ p {
     color: #ffffff !important;
 }
 
+.demo-btn:visited,
+.nav-link.demo-btn:visited,
+.demo-btn:active,
+.nav-link.demo-btn:active,
+.demo-btn:focus,
+.nav-link.demo-btn:focus {
+    color: #ffffff !important;
+    background: #000000 !important;
+}
+
+.demo-btn:hover:visited,
+.nav-link.demo-btn:hover:visited {
+    color: #ffffff !important;
+    background: #1a1a1a !important;
+}
+
 .demo-btn::after,
 .nav-link.demo-btn::after {
     display: none;
@@ -4856,4 +4872,3 @@ section:nth-child(odd) {
         max-width: 300px;
     }
 }
-
