@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxEasy</title>
+    <link rel="icon" type="image/png" href="voxeasylogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="voxeasylogotrans.png" alt="VoxEasy" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="product.html" class="nav-link">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ourteam.html" class="nav-link">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link demo-btn" id="openDemoModal">Book Demo</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    VoxEasy
+                </h1>
+                <br>
+                <p class="hero-description">
+                    VoxEasy is an AI-powered platform that bridges the communication gap between <br> non-verbal patients, caregivers, and families.
+                    <br>
+                    <br>
+                    <strong><em>Currently in Beta Testing</em></strong>
+                </p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary" id="heroDemoBtn">Book a Live Demo</a>
+                    <a href="product.html" class="btn-secondary">View Product Overview</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <figure class="hero-device">
+                    <div class="device-frame">
+                        <div class="device-body">
+                            <img src="home.png" alt="VoxEasy tablet interface" class="device-image">
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Communication Gap Section -->
+    <section id="communication-gap" class="communication-gap">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Problem</span>
+                <h2>The Communication Gap in Healthcare</h2>
+            </div>
+
+            <div class="problem-stats-grid">
+                <div class="problem-stat-card">
+                    <div class="stat-visual">
+                        <span class="stat-number-large">15M+</span>
+                    </div>
+                    <p class="stat-description">Patients intubated annually in the U.S., many unable to communicate for days or weeks.</p>
+                    <p class="stat-source"><a href="https://my.clevelandclinic.org/health/articles/22160-intubation" target="_blank">Source: Cleveland Clinic</a></p>
+                </div>
+
+                <div class="problem-stat-card">
+                    <div class="stat-visual">
+                        <span class="stat-number-large">50%</span>
+                    </div>
+                    <p class="stat-description">Patients in the ICU could be served by assistive communication tools after ventilation or tracheostomy.</p>
+                    <p class="stat-source"><a href="https://ccforum.biomedcentral.com/articles/10.1186/s13054-016-1483-2" target="_blank">Source: National Center for Biotechnology Information</a></p>
+                </div>
+
+                <div class="problem-stat-card">
+                    <div class="stat-visual">
+                        <span class="stat-number-large">67%</span>
+                    </div>
+                    <p class="stat-description">Communication breakdowns are a leading cause of medical errors and delays in care.</p>
+                    <p class="stat-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11625514/#:~:text=The%20Joint%20Commission%20reports%20that,events%20%5B3%2D6%5D." target="_blank">Source: NCBI / PubMed Central</a></p>
+                </div>
+            </div>
+
+            <div class="impact-quote">
+                <p class="quote-text">Non-verbal patients often describe their hospital experience as <strong>"terrifying"</strong> or <strong>"isolating"</strong></p>
+            </div>
+
+            <div class="founder-story">
+                <div class="story-content">
+                    <h3>Why VoxEasy Exists</h3>
+                    <div class="story-text">
+                        <p>VoxEasy began after witnessing a loved one lose their ability to speak following a tracheostomy procedure and placement on a ventilator.</p>
+                        <p>Watching the helplessness of trying to communicate simple needs such as pain, comfort, and reassurance revealed just how broken patient communication is, and how fragile the human experience becomes when voice is taken away.</p>
+                        <p class="story-mission">What started as a moment of frustration became a mission to restore dignity through technology. <strong>VoxEasy was built to ensure no patient ever feels voiceless again.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clinical Demonstrations Section -->
+    <section id="clinical-demos" class="clinical-demos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Real-World Validation</span>
+                <h2>Actively testing in clinical settings</h2>
+                <p>We’re working with healthcare professionals and non-verbal patients to refine VoxEasy through ongoing demonstrations and user testing across multiple care environments.</p>
+            </div>
+
+            <div class="stats-banner">
+                <div class="stat-highlight">
+                    <span class="stat-number">23</span>
+                    <span class="stat-label">Clinical Demonstrations</span>
+                    <span class="stat-detail">With doctors, caregivers & healthcare providers</span>
+                </div>
+                <div class="stat-highlight">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">User Tests</span>
+                    <span class="stat-detail">With non-verbal patients in clinics, senior homes & hospice care</span>
+                </div>
+            </div>
+
+            <div class="demo-gallery">
+                <div class="demo-showcase">
+                    <div class="demo-image-wrapper">
+                        <img src="demo2.jpeg" alt="Clinical demonstration with COO" class="demo-image">
+                    </div>
+                    <div class="demo-caption">
+                        <h4>Clinical Demonstration with Healthcare Professionals</h4>
+                        <p>Outreach intern from UT Austin and COO conducting a VoxEasy demonstration at a clinic. <strong>One of many real-world demos we've done to gather feedback and refine the product.</strong></p>
+                    </div>
+                </div>
+
+                <div class="demo-showcase">
+                    <div class="demo-image-wrapper">
+                        <img src="demo1.jpeg" alt="Demonstration with doctors" class="demo-image">
+                    </div>
+                    <div class="demo-caption">
+                        <h4>Engaging with Healthcare Providers</h4>
+                        <p>Conducting a VoxEasy demonstration to doctors as part of ongoing outreach and feedback sessions. <strong>For privacy, we do not share patient images or identifying details of clinicians.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h2>See VoxEasy in Action</h2>
+                    <p>Book a live demonstration and discover how VoxEasy can transform patient communication at your facility.</p>
+                    
+                    <div class="demo-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Clinical demonstration and walkthrough</h4>
+                                <p>Experience how VoxEasy works in real care environments and how it integrates into existing patient workflows.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Pilot testing and feedback participation</h4>
+                                <p>Join our ongoing clinical testing program to evaluate patient outcomes and communication efficiency.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Early access to research results</h4>
+                                <p>Receive data summaries and implementation insights from real-world demos and user tests.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-form">
+                    <form id="demoForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <select id="role" name="role">
+                                <option value="">Select your role</option>
+                                <option value="administrator">Hospital Administrator</option>
+                                <option value="clinical-director">Clinical Director</option>
+                                <option value="nurse">Nurse</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="it-manager">IT Manager</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell us about your needs</label>
+                            <textarea id="message" name="message" rows="4" placeholder="What challenges are you facing with patient communication?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Book Your Demo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src="voxeasylogo.png" alt="VoxEasy" class="logo-image">
+                        </a>
+                    </div>
+                    <p>Giving every patient a voice when they need it most</p>
+                    <div class="contact-info">
+                        <a href="mailto:voxeasytech@gmail.com">voxeasytech@gmail.com</a>
+                        <a href="tel:9728383558">(972) 838-3558</a>
+                        <a href="https://voxeasytech.com">voxeasytech.com</a>
+                    </div>
+                </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VoxEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="success-notification">
+        <div class="success-icon">✓</div>
+        <div class="success-content">
+            <h3>Thank You!</h3>
+            <p>We'll contact you within 24 hours to schedule your demo.</p>
+        </div>
+    </div>
+
+    <!-- Book Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2>Book a Live Demo</h2>
+                <p>Discover how VoxEasy can transform patient communication at your facility</p>
+            </div>
+            <div class="modal-body">
+                <form id="modalDemoForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="modal-name">Full Name *</label>
+                        <input type="text" id="modal-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-email">Email Address *</label>
+                        <input type="email" id="modal-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-organization">Organization *</label>
+                        <input type="text" id="modal-organization" name="organization" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-role">Your Role</label>
+                        <select id="modal-role" name="role">
+                            <option value="">Select your role</option>
+                            <option value="administrator">Hospital Administrator</option>
+                            <option value="clinical-director">Clinical Director</option>
+                            <option value="nurse">Nurse</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="it-manager">IT Manager</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-phone">Phone Number</label>
+                        <input type="tel" id="modal-phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-message">Tell us about your needs</label>
+                        <textarea id="modal-message" name="message" rows="4" placeholder="What challenges are you facing with patient communication?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Book Your Demo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

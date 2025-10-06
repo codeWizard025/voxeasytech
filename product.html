@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - VoxEasy</title>
+    <link rel="icon" type="image/png" href="voxeasylogo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="voxeasylogotrans.png" alt="VoxEasy" class="logo-image">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="product.html" class="nav-link active">Product</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ourteam.html" class="nav-link">Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link demo-btn" id="openDemoModal">Book Demo</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    The VoxEasy Product
+                </h1>
+                <p class="hero-description">
+                    A comprehensive communication solution designed specifically for non-verbal patients.
+                    <br>
+                    Simple, powerful, and clinically validated.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#interaction-methods" class="btn-primary">Explore Features</a>
+                    <a href="#demo" class="btn-secondary">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <!-- Key Interaction Methods Section -->
+    <section id="interaction-methods" class="interaction-methods">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Advanced Interaction</span>
+                <h2>Multiple Ways to Communicate</h2>
+                <p>Touch, tap, or gaze. <br>VoxEasy adapts to each patient's abilities. Eye-tracking enabled for patients with limited mobility using open source software (WebGazer.js).</p>
+            </div>
+
+            <div class="interaction-showcase">
+                <div class="interaction-item">
+                    <div class="interaction-visual">
+                        <figure class="interaction-device interaction-device-right">
+                            <div class="interaction-frame">
+                                <div class="interaction-body">
+                                    <img src="pain.png" alt="3D Pain Mapper interface" class="interaction-image">
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="interaction-text">
+                        <h3>3D Pain Mapper</h3>
+                        <p>Lets patients quickly pinpoint pain location, type and intensity, and share this information with caregivers in seconds. Eye-tracking technology allows patients to simply look at the area of discomfort on a 3D body model.</p>
+                    </div>
+                </div>
+
+                <div class="interaction-item reverse">
+                    <div class="interaction-visual">
+                        <figure class="interaction-device interaction-device-left">
+                            <div class="interaction-frame">
+                                <div class="interaction-body">
+                                    <img src="board.png" alt="Smart Category Selector interface" class="interaction-image">
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="interaction-text">
+                        <h3>Smart Category Selector</h3>
+                        <p>Quickly navigates 96 patient needs across multiple categories using large, intuitive icons for faster communication. Patients can gaze, touch, or tap at their desired category, making communication easy even with mobility limitations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interaction-methods" class="interaction-methods">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Intelligent Communication</span>
+                <h2>Accessible Typing for Every Patient</h2>
+                <p>Giving every patient an effortless way to express themselves through intelligent conversation and accessible typing.</p>
+            </div>
+
+            <div class="interaction-showcase">
+                <div class="interaction-item">
+                    <div class="interaction-visual">
+                        <figure class="interaction-device interaction-device-right">
+                            <div class="interaction-frame">
+                                <div class="interaction-body">
+                                    <img src="voxai.png" alt="VoxAI interface" class="interaction-image">
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="interaction-text">
+                        <h3>VoxAI Chatbot</h3>
+                        <p>An AI bedside assistant that understands patient inputs and delivers instant, context-aware responses.</p>
+                    </div>
+                </div>
+
+                <div class="interaction-item reverse">
+                    <div class="interaction-visual">
+                        <figure class="interaction-device interaction-device-left">
+                            <div class="interaction-frame">
+                                <div class="interaction-body">
+                                    <img src="keyboard.png" alt="On-Screen Keyboard interface" class="interaction-image">
+                                </div>
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="interaction-text">
+                        <h3>On-Screen Keyboard</h3>
+                        <p>A large, multilingual on-screen keyboard with voice output for patients who prefer to type and speak freely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI-Powered Data Insights Section -->
+    <section id="ai-insights" class="ai-insights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Powered by VoxAI</span>
+                <h2>AI-Powered Data Insights</h2>
+                <p>Powered by VoxAI, every patient interaction becomes actionable intelligence. Detecting trends, predicting risks before they escalate, and helping clinicians make faster, life-saving decisions.</p>
+            </div>
+
+            <div class="insights-visual">
+                <figure class="insights-device">
+                    <div class="insights-frame">
+                        <div class="insights-body">
+                            <img src="data.png" alt="VoxAI Analytics Dashboard" class="insights-image">
+                        </div>
+                    </div>
+                </figure>
+            </div>
+            
+            <div class="insights-features">
+                <div class="insight-feature">
+                    <div class="insight-icon">🔍</div>
+                    <div class="insight-content">
+                        <h3>Pattern Detection</h3>
+                        <p>VoxAI analyzes communication patterns to identify emerging patient needs and recurring pain points across your facility.</p>
+                    </div>
+                </div>
+                
+                <div class="insight-feature">
+                    <div class="insight-icon">⚠️</div>
+                    <div class="insight-content">
+                        <h3>Risk Prediction</h3>
+                        <p>Machine learning algorithms flag potential complications early, enabling proactive intervention before conditions deteriorate.</p>
+                    </div>
+                </div>
+                
+                <div class="insight-feature">
+                    <div class="insight-icon">📊</div>
+                    <div class="insight-content">
+                        <h3>Actionable Intelligence</h3>
+                        <p>Transform patient data into clinical insights that improve response times, optimize care workflows, and enhance outcomes.</p>
+                    </div>
+                </div>
+                
+                <div class="insight-feature">
+                    <div class="insight-icon">🎯</div>
+                    <div class="insight-content">
+                        <h3>Faster Decisions</h3>
+                        <p>Real-time analytics help clinicians make informed, life-saving decisions with complete patient communication context.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+   
+
+    <!-- Product Advantages Section -->
+    <section id="advantage" class="advantage">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Why VoxEasy</span>
+                <h2>The VoxEasy Advantage</h2>
+            </div>
+
+            <div class="advantage-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">❤️</div>
+                    <h3>Human-Centered Design</h3>
+                    <p>Built around the patient experience, prioritizing empathy, accessibility, and clarity in every interaction.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">✅</div>
+                    <h3>Real-World Validation</h3>
+                    <p>Actively tested with clinicians and non-verbal patients across multiple care settings to ensure real clinical impact.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🤖</div>
+                    <h3>AI-Driven Communication</h3>
+                    <p>Powered by intelligent natural language models that transform gestures, selections, and gaze into clear, accurate speech.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🔄</div>
+                    <h3>Adaptive Technology</h3>
+                    <p>From eye-tracking to touch input, VoxEasy adapts to each patient's mobility and communication ability.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">📊</div>
+                    <h3>Data-Backed Insights</h3>
+                    <p>Securely captures communication trends to help caregivers identify needs, improve workflows, and enhance patient care.</p>
+                </div>
+
+                <div class="advantage-card">
+                    <div class="advantage-icon">🌍</div>
+                    <h3>Multilingual Accessibility</h3>
+                    <p>Supports multiple languages, bridging cultural and linguistic gaps to ensure every patient is understood.</p>
+                </div>
+            </div>
+
+            <!-- Competitive Landscape -->
+            <div class="competitive-landscape">
+                <h2>Competitive Landscape</h2>
+                <p class="landscape-subtitle">VOXEASY WINS THROUGH USABILITY, IMMEDIACY, INTEGRATION.</p>
+                
+                <div class="competitors-grid">
+                    <div class="competitor-item">
+                        <div class="competitor-image-container">
+                            <img src="tobi.png" alt="Tobii Dynavox Interface" class="competitor-image">
+                        </div>
+                        <h3>TOBII DYNAVOX</h3>
+                        <p class="competitor-limitation">EXPENSIVE, HARDWARE DEPENDANT</p>
+                    </div>
+                    
+                    <div class="competitor-item">
+                        <div class="competitor-image-container">
+                            <img src="PROLOQUO2GO.png" alt="Proloquo2Go Interface" class="competitor-image">
+                        </div>
+                        <h3>PROLOQUO2GO</h3>
+                        <p class="competitor-limitation">PERMANENT DISABILITY FOCUSED, COMPLEX</p>
+                    </div>
+                    
+                    <div class="competitor-item">
+                        <div class="competitor-image-container">
+                            <img src="vidatak.png" alt="VidaTalk Interface" class="competitor-image">
+                        </div>
+                        <h3>VIDATALK</h3>
+                        <p class="competitor-limitation">LIMITED INTERACTIVITY, HIGHLY STATIC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="clinical-demos">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Applications</span>
+                <h2>Who Benefits from VoxEasy?</h2>
+                <p>Our platform serves diverse patient populations across multiple care settings</p>
+            </div>
+
+            <div class="demo-gallery">
+                <div class="demo-showcase">
+                    <div class="demo-caption">
+                        <h4>Intubated ICU Patients</h4>
+                        <p><strong>1.5M+ patients</strong> are intubated annually in the U.S. VoxEasy gives them a voice during ventilation, reducing anxiety and improving nurse response times by allowing direct communication of pain, comfort needs, and concerns.</p>
+                    </div>
+                </div>
+
+                <div class="demo-showcase">
+                    <div class="demo-caption">
+                        <h4>Post-Operative Recovery</h4>
+                        <p>Patients recovering from throat surgery, tracheostomy, or head/neck procedures can communicate immediately post-op without strain. <strong>Faster pain assessment</strong> and better comfort lead to improved recovery outcomes.</p>
+                    </div>
+                </div>
+
+                <div class="demo-showcase">
+                    <div class="demo-caption">
+                        <h4>Stroke & ALS Patients</h4>
+                        <p>Neurological conditions often affect speech. VoxEasy provides a reliable way for patients with aphasia, ALS, or stroke-related speech loss to <strong>maintain independence</strong> and communicate with caregivers and loved ones.</p>
+                    </div>
+                </div>
+
+                <div class="demo-showcase">
+                    <div class="demo-caption">
+                        <h4>Hospice & Palliative Care</h4>
+                        <p>End-of-life patients deserve dignity. VoxEasy ensures they can express wishes, share feelings, and maintain connection with family even when voice is fading. <strong>Preserving humanity</strong> in the most vulnerable moments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="demo">
+        <div class="container">
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h2>Experience VoxEasy</h2>
+                    <p>Book a live demonstration and see how VoxEasy can transform patient communication at your facility.</p>
+                    
+                    <div class="demo-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Live product walkthrough</h4>
+                                <p>See the interface in action. Try the icon system, keyboard input, and text-to-speech features firsthand.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Custom implementation planning</h4>
+                                <p>Discuss your facility's needs. We'll show you deployment options, training resources, and integration pathways.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-content">
+                                <h4>Pilot program discussion</h4>
+                                <p>Learn about our pilot testing program. Get early access, provide feedback, and help shape the product roadmap.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-form">
+                    <form id="demoForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Your Role</label>
+                            <select id="role" name="role">
+                                <option value="">Select your role</option>
+                                <option value="administrator">Hospital Administrator</option>
+                                <option value="clinical-director">Clinical Director</option>
+                                <option value="nurse">Nurse</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="it-manager">IT Manager</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell us about your needs</label>
+                            <textarea id="message" name="message" rows="4" placeholder="What challenges are you facing with patient communication?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Book Your Demo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <a href="index.html">
+                            <img src="voxeasylogo.png" alt="VoxEasy" class="logo-image">
+                        </a>
+                    </div>
+                    <p>Giving every patient a voice when they need it most</p>
+                    <div class="contact-info">
+                        <a href="mailto:voxeasytech@gmail.com">voxeasytech@gmail.com</a>
+                        <a href="tel:9728383558">(972) 838-3558</a>
+                        <a href="https://voxeasytech.com">voxeasytech.com</a>
+                    </div>
+                </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VoxEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Notification -->
+    <div id="successNotification" class="success-notification">
+        <div class="success-icon">✓</div>
+        <div class="success-content">
+            <h3>Thank You!</h3>
+            <p>We'll contact you within 24 hours to schedule your demo.</p>
+        </div>
+    </div>
+
+    <!-- Book Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-header">
+                <h2>Book a Live Demo</h2>
+                <p>Discover how VoxEasy can transform patient communication at your facility</p>
+            </div>
+            <div class="modal-body">
+                <form id="modalDemoForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="modal-name">Full Name *</label>
+                        <input type="text" id="modal-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-email">Email Address *</label>
+                        <input type="email" id="modal-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-organization">Organization *</label>
+                        <input type="text" id="modal-organization" name="organization" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-role">Your Role</label>
+                        <select id="modal-role" name="role">
+                            <option value="">Select your role</option>
+                            <option value="administrator">Hospital Administrator</option>
+                            <option value="clinical-director">Clinical Director</option>
+                            <option value="nurse">Nurse</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="it-manager">IT Manager</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-phone">Phone Number</label>
+                        <input type="tel" id="modal-phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-message">Tell us about your needs</label>
+                        <textarea id="modal-message" name="message" rows="4" placeholder="What challenges are you facing with patient communication?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Book Your Demo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
