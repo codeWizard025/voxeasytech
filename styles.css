@@ -184,6 +184,15 @@ p {
     transform: translateZ(0);
 }
 
+.navbar-scrolled {
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
+}
+
+.navbar-hidden {
+    transform: translateY(-100%) translateZ(0) !important;
+}
+
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
