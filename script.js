@@ -81,22 +81,18 @@ window.addEventListener('scroll', () => {
     
     // Navbar background and shadow changes
     if (scrollTop > navbarScrollThreshold) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.1)';
-        navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.08)';
-        navbar.style.backdropFilter = 'blur(40px)';
+        navbar.classList.add('navbar-scrolled');
     } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.05)';
-        navbar.style.boxShadow = 'none';
-        navbar.style.backdropFilter = 'blur(40px)';
+        navbar.classList.remove('navbar-scrolled');
     }
     
-    // Hide/show navbar on scroll
+    // Hide/show navbar on scroll using classes instead of inline styles
     if (scrollTop > lastScrollTop && scrollTop > navbarScrollThreshold) {
         // Scrolling down
-        navbar.style.transform = 'translateY(-100%)';
+        navbar.classList.add('navbar-hidden');
     } else {
         // Scrolling up
-        navbar.style.transform = 'translateY(0)';
+        navbar.classList.remove('navbar-hidden');
     }
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
