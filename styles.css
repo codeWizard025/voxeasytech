@@ -599,6 +599,7 @@ body:has(.hero-container > .hero-content:only-child) .hero-buttons {
   padding:0;
   box-shadow: 0 10px 20px rgba(9,30,66,.08);
   overflow: hidden;
+  position: relative;
 }
 
 .device-image{
@@ -607,6 +608,39 @@ body:has(.hero-container > .hero-content:only-child) .hero-buttons {
   display: block;
   object-fit: cover;
   border-radius: calc(var(--r-xl) - 8px);
+}
+
+/* Preview Hint - Subtle hover hint positioned inside the image */
+.preview-hint {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 0.65rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
+  background: transparent;
+  backdrop-filter: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.device-frame:hover .preview-hint,
+.preview-hint:hover,
+.preview-hint:active {
+  color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .device-title{margin:6px 0 6px; font-size:20px; text-align:center; color:var(--ink)}
@@ -633,12 +667,19 @@ body:has(.hero-container > .hero-content:only-child) .hero-buttons {
   box-shadow: 0 18px 34px rgba(9,30,66,.14);
 }
 
-@keyframes floaty{0%,100%{transform: rotateY(-20deg) translateY(0)}
-                  50%{transform: rotateY(-20deg) translateY(-4px)}}
+@keyframes floaty{0%,100%{transform: rotateY(-15deg) translateY(0)}
+                  50%{transform: rotateY(-15deg) translateY(-4px)}}
 
 @media (max-width: 980px){
   .hero-device{justify-self:stretch}
   .device-frame{transform:none}
+  .device-frame:hover{transform:none}
+  
+  .preview-hint {
+    font-size: 0.6rem;
+    padding: 0.35rem 0.7rem;
+    top: 0.75rem;
+  }
 }
 
 /* Tablet Mockup Styles */
@@ -2785,6 +2826,84 @@ section:nth-child(odd) {
     animation: fadeIn 0.3s ease;
 }
 
+/* Image Preview Modal Styles */
+.image-preview-modal {
+    max-width: none !important;
+    max-height: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+}
+
+.image-preview-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.preview-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: white;
+}
+
+.image-preview-modal .modal-close {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 10002;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments for iframe modal */
+@media (max-width: 768px) {
+    .image-preview-modal {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+    }
+    
+    .preview-iframe {
+        border-radius: 0;
+    }
+    
+    .image-preview-modal .modal-close {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
 .modal.active {
     display: flex;
     align-items: center;
@@ -2816,6 +2935,17 @@ section:nth-child(odd) {
     border: 1px solid rgba(255, 255, 255, 0.3);
     animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10001;
+}
+
+.modal-content.image-preview-modal {
+    max-width: none;
+    width: 100vw;
+    max-height: none;
+    height: 100vh;
+    overflow: hidden;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .modal-close {
