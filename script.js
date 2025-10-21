@@ -542,12 +542,181 @@ function showSuccessNotification() {
     }, 5000);
 }
 
+// Image Preview Modal Functionality
+const imageModal = document.getElementById('imageModal');
+const heroImage = document.getElementById('heroImage');
+const imageModalClose = imageModal?.querySelector('.modal-close');
+const imageModalOverlay = imageModal?.querySelector('.modal-overlay');
+
+// Function to enter fullscreen
+const enterFullscreen = () => {
+    const elem = document.documentElement;
+    if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(err => {
+            console.log('Error attempting to enable fullscreen:', err);
+        });
+    } else if (elem.webkitRequestFullscreen) { // Safari
+        elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { // IE11
+        elem.msRequestFullscreen();
+    }
+};
+
+// Function to exit fullscreen
+const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+        document.exitFullscreen().catch(err => {
+            console.log('Error attempting to exit fullscreen:', err);
+        });
+    } else if (document.webkitExitFullscreen) { // Safari
+        document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) { // IE11
+        document.msExitFullscreen();
+    }
+};
+
+// Create loading overlay for modal transition
+const createModalLoader = () => {
+    const loaderOverlay = document.createElement('div');
+    loaderOverlay.id = 'modalLoader';
+    loaderOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #cfeaff 0%, #f3f3f4 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10002;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    const spinner = document.createElement('div');
+    spinner.style.cssText = `
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(102, 126, 234, 0.2);
+        border-top: 4px solid #667eea;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+        margin-bottom: 1.5rem;
+    `;
+    
+    const loadingText = document.createElement('div');
+    loadingText.textContent = 'Entering VoxEasy...';
+    loadingText.style.cssText = `
+        font-family: 'Inter', sans-serif;
+        font-size: 1.2rem;
+        color: #667eea;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+    `;
+    
+    loaderOverlay.appendChild(spinner);
+    loaderOverlay.appendChild(loadingText);
+    document.body.appendChild(loaderOverlay);
+    
+    return loaderOverlay;
+};
+
+// Function to open image modal with loading effect
+const openImageModal = () => {
+    if (imageModal) {
+        // Create and show loader
+        const loader = createModalLoader();
+        
+        // Fade in loader
+        setTimeout(() => {
+            loader.style.opacity = '1';
+        }, 10);
+        
+        // Enter fullscreen mode
+        enterFullscreen();
+        
+        // Show modal after brief loading period
+        setTimeout(() => {
+            imageModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Fade out loader
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                if (loader.parentNode) {
+                    document.body.removeChild(loader);
+                }
+            }, 300);
+        }, 800);
+    }
+};
+
+// Open image modal when hero image is clicked
+heroImage?.addEventListener('click', openImageModal);
+
+// Also make the preview hint clickable
+const previewHint = document.querySelector('.preview-hint');
+previewHint?.addEventListener('click', openImageModal);
+
+// Close image modal
+const closeImageModal = () => {
+    if (imageModal) {
+        // Remove any existing loader if present
+        const existingLoader = document.getElementById('modalLoader');
+        if (existingLoader && existingLoader.parentNode) {
+            document.body.removeChild(existingLoader);
+        }
+        
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Exit fullscreen mode
+        exitFullscreen();
+    }
+};
+
+imageModalClose?.addEventListener('click', closeImageModal);
+imageModalOverlay?.addEventListener('click', closeImageModal);
+
+// Close image modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && imageModal && imageModal.classList.contains('active')) {
+        closeImageModal();
+    }
+});
+
+// Handle fullscreen change events (when user exits fullscreen manually with ESC or F11)
+document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && imageModal && imageModal.classList.contains('active')) {
+        // Remove any existing loader if present
+        const existingLoader = document.getElementById('modalLoader');
+        if (existingLoader && existingLoader.parentNode) {
+            document.body.removeChild(existingLoader);
+        }
+        // User exited fullscreen manually, close the modal
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+document.addEventListener('webkitfullscreenchange', () => {
+    if (!document.webkitFullscreenElement && imageModal && imageModal.classList.contains('active')) {
+        // Remove any existing loader if present
+        const existingLoader = document.getElementById('modalLoader');
+        if (existingLoader && existingLoader.parentNode) {
+            document.body.removeChild(existingLoader);
+        }
+        imageModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
 // Demo Modal Functionality
 const demoModal = document.getElementById('demoModal');
 const openDemoModalBtn = document.getElementById('openDemoModal');
 const heroDemoBtn = document.getElementById('heroDemoBtn');
-const modalClose = document.querySelector('.modal-close');
-const modalOverlay = document.querySelector('.modal-overlay');
+const modalClose = demoModal?.querySelector('.modal-close');
+const modalOverlay = demoModal?.querySelector('.modal-overlay');
 
 // Function to open modal
 const openModal = (e) => {
@@ -576,9 +745,10 @@ const closeModal = () => {
 modalClose?.addEventListener('click', closeModal);
 modalOverlay?.addEventListener('click', closeModal);
 
-// Close on Escape key
+// Close demo modal on Escape key (also check it's not the image modal)
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && demoModal && demoModal.classList.contains('active')) {
+    if (e.key === 'Escape' && demoModal && demoModal.classList.contains('active') && 
+        (!imageModal || !imageModal.classList.contains('active'))) {
         closeModal();
     }
 });
