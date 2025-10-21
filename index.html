@@ -63,7 +63,8 @@
                 <figure class="hero-device">
                     <div class="device-frame">
                         <div class="device-body">
-                            <img src="home.png" alt="VoxEasy tablet interface" class="device-image">
+                            <span class="preview-hint">Click to Preview</span>
+                            <img src="home.png" alt="VoxEasy tablet interface" class="device-image" id="heroImage" style="cursor: pointer;" draggable="false">
                         </div>
                     </div>
                 </figure>
@@ -281,6 +282,17 @@
         <div class="success-content">
             <h3>Thank You!</h3>
             <p>We'll contact you within 24 hours to schedule your demo.</p>
+        </div>
+    </div>
+
+    <!-- Home Page Preview Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content image-preview-modal">
+            <button class="modal-close">&times;</button>
+            <div class="image-preview-container">
+                <iframe src="home.html" class="preview-iframe" title="VoxEasy Home Interface Preview"></iframe>
+            </div>
         </div>
     </div>
 
