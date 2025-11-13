@@ -101,7 +101,7 @@
             <div class="demo-gallery">
                 <div class="demo-showcase">
                     <div class="demo-image-wrapper">
-                        <img src="demo2.jpeg" alt="Clinical demonstration with COO" class="demo-image">
+                        <img src="demo2.jpeg" alt="Clinical demonstration with COO" class="demo-image clickable-image" data-image-src="demo2.jpeg">
                     </div>
                     <div class="demo-caption">
                         <h4>Clinical Demonstration with Healthcare Professionals</h4>
@@ -111,7 +111,7 @@
 
                 <div class="demo-showcase">
                     <div class="demo-image-wrapper">
-                        <img src="demo1.jpeg" alt="Demonstration with doctors" class="demo-image">
+                        <img src="demo1.jpeg" alt="Demonstration with doctors" class="demo-image clickable-image" data-image-src="demo1.jpeg">
                     </div>
                     <div class="demo-caption">
                         <h4>Engaging with Healthcare Providers</h4>
@@ -345,6 +345,17 @@
                     </div>
                     <button type="submit" class="btn-primary full-width">Book Your Demo</button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlarged Image Modal -->
+    <div id="enlargedImageModal" class="modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content image-preview-modal">
+            <button class="modal-close">&times;</button>
+            <div class="image-preview-container">
+                <img id="enlargedImageSrc" src="" alt="Enlarged view" class="preview-image">
             </div>
         </div>
     </div>
