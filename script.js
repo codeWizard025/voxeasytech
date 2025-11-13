@@ -811,3 +811,49 @@ document.getElementById('modalDemoForm')?.addEventListener('submit', async funct
     }
 });
 
+// Enlarged Image Modal Functionality
+const enlargedImageModal = document.getElementById('enlargedImageModal');
+const enlargedImageSrc = document.getElementById('enlargedImageSrc');
+const enlargedImageModalClose = enlargedImageModal?.querySelector('.modal-close');
+const enlargedImageModalOverlay = enlargedImageModal?.querySelector('.modal-overlay');
+
+// Function to open enlarged image modal
+const openEnlargedImageModal = (imageSrc) => {
+    if (enlargedImageModal && enlargedImageSrc) {
+        enlargedImageSrc.src = imageSrc;
+        enlargedImageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+// Function to close enlarged image modal
+const closeEnlargedImageModal = () => {
+    if (enlargedImageModal) {
+        enlargedImageModal.classList.remove('active');
+        document.body.style.overflow = '';
+        // Clear the image source
+        if (enlargedImageSrc) {
+            enlargedImageSrc.src = '';
+        }
+    }
+};
+
+// Add click event listeners to all clickable images
+document.querySelectorAll('.clickable-image').forEach(image => {
+    image.style.cursor = 'pointer';
+    image.addEventListener('click', function() {
+        const imageSrc = this.getAttribute('data-image-src') || this.src;
+        openEnlargedImageModal(imageSrc);
+    });
+});
+
+// Close enlarged image modal when clicking close button or overlay
+enlargedImageModalClose?.addEventListener('click', closeEnlargedImageModal);
+enlargedImageModalOverlay?.addEventListener('click', closeEnlargedImageModal);
+
+// Close enlarged image modal on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && enlargedImageModal && enlargedImageModal.classList.contains('active')) {
+        closeEnlargedImageModal();
+    }
+});
