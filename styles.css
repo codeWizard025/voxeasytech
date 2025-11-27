@@ -1070,37 +1070,50 @@ section:nth-child(odd) {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(40px);
     -webkit-backdrop-filter: blur(40px);
-    padding: 4rem;
+    padding: 3rem; /* Reduced padding slightly */
     border-radius: 2rem;
     margin-top: 4rem;
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     position: relative;
+    overflow: hidden; /* Ensure content stays within rounded corners */
 }
 
-.founder-story::before {
-    content: '"';
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    font-size: 6rem;
-    font-weight: 800;
-    color: rgba(0, 0, 0, 0.08);
-    line-height: 1;
-    font-family: Georgia, serif;
+.story-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 }
+
+.story-visual {
+    position: relative;
+}
+
+.story-image {
+    width: 100%;
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    /* Removed transition */
+}
+
+/* Removed hover interaction */
 
 .story-content {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
 }
 
 .story-content h3 {
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     font-weight: 700;
     color: #000000;
-    margin-bottom: 2rem;
-    text-align: center;
+    margin-bottom: 1.5rem;
+    text-align: left;
     letter-spacing: -0.02em;
 }
 
@@ -1122,6 +1135,25 @@ section:nth-child(odd) {
 
 .story-mission strong {
     font-weight: 700;
+}
+
+@media (max-width: 968px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .story-content h3,
+    .story-content {
+        text-align: center;
+    }
+    
+    .story-image {
+        transform: rotate(0deg);
+        max-width: 500px;
+        margin: 0 auto;
+        display: block;
+    }
 }
 
 /* Clinical Demonstrations Section */
@@ -1521,15 +1553,21 @@ section:nth-child(odd) {
     margin: 0 auto;
 }
 
+.insights-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
 .insight-feature {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.75rem;
     align-items: flex-start;
-    padding: 2.5rem;
+    padding: 1.25rem;
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 1.5rem;
+    border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1541,30 +1579,30 @@ section:nth-child(odd) {
 }
 
 .insight-icon {
-    width: 55px;
-    height: 55px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background: linear-gradient(135deg, #000000 0%, #333333 100%);
     color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .insight-content h3 {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
     font-weight: 700;
     color: #000000;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.35rem;
     letter-spacing: -0.01em;
 }
 
 .insight-content p {
-    font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
-    line-height: 1.6;
+    font-size: clamp(0.8125rem, 2vw, 0.875rem);
+    line-height: 1.5;
     color: #333333;
     margin: 0;
 }
@@ -3644,9 +3682,10 @@ section:nth-child(odd) {
         gap: 3rem;
     }
     
-    .insights-features {
+    .insights-features,
+    .insights-features-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
     
     .interaction-item.reverse {
@@ -3657,7 +3696,8 @@ section:nth-child(odd) {
         gap: 4rem;
     }
     
-    .insights-features {
+    .insights-features,
+    .insights-features-grid {
         gap: 2rem;
     }
     
